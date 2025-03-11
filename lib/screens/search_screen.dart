@@ -31,12 +31,7 @@ class _SearchScreenState extends State<SearchScreen> {
           // Đưa thanh tìm kiếm sát phần trên cùng
           Container(
             color: Colors.white,
-            padding: const EdgeInsets.only(
-              top: 70,
-              bottom: 10,
-              left: 16,
-              right: 16,
-            ),
+            padding: const EdgeInsets.only(top: 70, bottom: 10, left: 16, right: 16),
             child: TextField(
               controller: _searchController,
               onSubmitted: (_) => _searchMeals(),
@@ -63,10 +58,8 @@ class _SearchScreenState extends State<SearchScreen> {
                   if (state.meals.isEmpty) {
                     return const Padding(
                       padding: EdgeInsets.all(16),
-                      child: Text(
-                        'Không tìm thấy món ăn',
-                        style: TextStyle(fontSize: 16),
-                      ),
+                      child: Text('Không tìm thấy món ăn',
+                          style: TextStyle(fontSize: 16)),
                     );
                   }
                   return ListView.builder(
@@ -75,14 +68,20 @@ class _SearchScreenState extends State<SearchScreen> {
                     itemBuilder: (context, index) {
                       final meal = state.meals[index];
                       return ListTile(
-                        title: Text(
-                          meal.strMeal,
-                          style: TextStyle(fontSize: 16),
+                        leading: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.network(
+                            meal.strMealThumb,
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                        trailing: Icon(
-                          Icons.chevron_right,
-                          color: Colors.amber,
-                        ),
+                        title: Text(meal.strMeal,
+                            style: TextStyle(fontSize: 16)),
+                        subtitle: Text("${meal.strCategory} - ${meal.strArea}",
+                            style: TextStyle(fontSize: 14, color: Colors.grey)),
+                        trailing: Icon(Icons.chevron_right, color: Colors.amber),
                         onTap: () {
                           // Mở trang chi tiết món ăn
                         },
@@ -97,10 +96,8 @@ class _SearchScreenState extends State<SearchScreen> {
                 }
                 return const Padding(
                   padding: EdgeInsets.all(16),
-                  child: Text(
-                    'Nhập từ khóa để tìm kiếm',
-                    style: TextStyle(fontSize: 16),
-                  ),
+                  child: Text('Nhập từ khóa để tìm kiếm',
+                      style: TextStyle(fontSize: 16)),
                 );
               },
             ),

@@ -18,7 +18,7 @@ class _VideoItemState extends State<VideoItem>
   @override
   void initState() {
     super.initState();
-    final videoId = YoutubePlayer.convertUrlToId(widget.meal.strYoutube);
+    final videoId = YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=Rif-RTvmmss&list=RDRif-RTvmmss&start_radio=1&rv=HqFK3a3D74M");
     if (videoId != null) {
       _controller = YoutubePlayerController(
         initialVideoId: videoId,

@@ -1,4 +1,4 @@
-# food_app
+# ITC-FoodApp
 
 A new Flutter project.
 
